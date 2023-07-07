@@ -20,7 +20,7 @@ int area(struc Rectangle rec)
 
 int main()
 {
-    struct Rectangle re = {10, 5};  // struct is necessary in C only not in C++
+    struct Rectangle re = {10, 5};
     printf("%d", area(re));
 }
 ```
