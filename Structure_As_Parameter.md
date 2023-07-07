@@ -20,7 +20,7 @@ int area(struc Rectangle rec)
 
 int main()
 {
-    struct Rectangle re = {10, 5};
+    struct Rectangle re = {10, 5};  // struct is necessary in C only not in C++
     printf("%d", area(re));
 }
 ```
@@ -94,4 +94,31 @@ int main()
     struct Test test = {{1,2,3,4,5}, 5};
     func(test);
 }
+```
+### Returning the structure `Rectangle`
+```C
+struct Rectangle
+{
+    int length;
+    int breadth;
+}
+
+struct Rectangle *func()
+{
+    struct Rectangle *p; // define struct only required in C
+    p = new Rectangle; // C++
+    p = (struct Rectangle*)malloc(sizeof(struct Rectangle)); // C
+
+    p -> length = 443;
+    p -> breadth = 34;
+    return p;
+}
+
+int main()
+{
+    struct Rectangle *ptr = func();
+    cout << ptr -> length;
+    return 0;
+}
+
 ```

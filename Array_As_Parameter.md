@@ -38,7 +38,7 @@ Note:
 ```C
 int * func(int n){
     int *p;
-    p = (int *)malloc(n*sizeof(int));
+    p = (int *)malloc(n*sizeof(int));   // C
     return (p);
 }
 
