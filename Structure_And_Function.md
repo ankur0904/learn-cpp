@@ -116,3 +116,43 @@ int main()
 }
 
 ```
+
+
+### In C++ 
+- `struct` and `class` is same. 
+- `struct` -> all the member are public // member is `int`, `functions` etc.
+- `class` -> all the member are private
+
+```C++
+
+struct Rectangle // <-
+{
+    private:
+       int length;
+       int breadth;
+    public:
+       Rectangle(int l, int b) // Constructor, automatically called when we are creating the object, does the job of initializing the object 
+       {
+           length = l;
+           breadth = b;
+       }
+       int area()
+       {
+           return length*breadth;
+       }
+       void changeLength(int l)
+       {
+           length = l;
+       }
+}
+
+int main()
+{
+    Rectangle r;  // when you create the rectangle beside the length and breadth, it will also get function related to the class
+
+    r.initialize(4324,5435);
+    r.area();
+    r.changeLength(54);
+}
+
+```
