@@ -351,3 +351,125 @@ int main()
     - Polymorphism: poly means many, morphism means forms, so polymorphism means many forms.
      In the parent class, we have a method, and in the child class, we have the same method with different implementation.
      the most common use of polymorphism is when a parent class reference is used to refer to a child class object.
+     ```C++
+# include <iostream>
+using std::string;
+
+// Abstraction class
+class AbstractEmployee{
+    // Pure virtual function - virtual class is a class that has one or more pure virtual functions & virtual 
+    // function is a function that can be overridden in a derived class
+    virtual void askForPromotion() = 0;
+};
+
+// employee class that inherits from AbstractEmployee, employee class provide implementation for the pure virtual function
+class Employee:AbstractEmployee {
+private:
+    // encapsulated properties
+    string company;
+    int age;
+protected:
+    string name;
+public:
+    // setter name
+    void setName(string Name){
+        name = Name;
+    }
+    // getter name
+    string getName(){
+        return name;
+    }
+    // setter company
+    void setCompany(string Company){
+        company = Company;
+    }
+    // getter company
+    string getCompany(){
+        return company;
+    }
+    // setter age
+    void setAge(int Age){
+        if (Age >= 18){
+            age = Age;
+        }
+    }
+    // getter age
+    int getAge(){
+        return age;
+    }
+    // Parameterized constructor
+    Employee(string Name, string Company, int Age){
+        name = Name;
+        company = Company;
+        age = Age;
+
+    }
+    // Deefault constructor when no parameters are passed
+    Employee(){
+
+    }
+    void greet(){
+        std:: cout << "Hi, my name is " + name << std::endl;
+    }
+
+    
+    void askForPromotion(){
+        if (age > 30){
+            std::cout << name << " got promoted!" << std::endl;
+        } else {
+            std::cout << name << " sorry, no promotion for you!" << std::endl;
+        }
+    }
+    //  virtual function can be overridden in a derived class, it'll check if function is present in derived class or not
+    virtual void Work(){
+        std::cout << name << " is checking email" << std::endl;
+    }
+};
+
+// default constructor of Developer class overwritten due to inheritance if paraent not have default constrcutor, 
+// it also inherits constructor from Employee class
+// Inheritance is private by default, so we need to make it public to access the properties of Employee class
+class Develper: public Employee{
+    public:
+        string favProgrammingLanguage;
+        Develper(string Name, string Company, int Age, string FavProgrammingLanguage):Employee(Name, Company, Age){
+            favProgrammingLanguage = FavProgrammingLanguage;
+        }
+        void fixBug(){
+            std::cout << name << " fixed bug using " << favProgrammingLanguage << std::endl;
+        }
+        // Note: private properties of Employee class are not accessible in Developer class, then *protected* come into picture
+        void Work(){
+            std::cout << name << " is writing " << favProgrammingLanguage << " code" << std::endl;
+        }
+};
+
+class Teacher: public Employee{
+    public:
+        string subject;
+        void prepareLesson(){
+            std::cout << name << " is preparing " << subject << " lesson" << std::endl;
+        }
+        Teacher(string Name, string Company, int Age, string Subject):Employee(Name, Company, Age){
+            subject = Subject;
+        }
+        void Work(){
+            std::cout << name << " is teaching " << subject << std::endl;
+        }
+};
+
+int main()
+{    
+    Develper d = Develper("Jack", "Facebook", 30, "Python");
+    Teacher t = Teacher("John", "School", 35, "History");
+    
+    Develper* dPtr = &d;
+    Teacher* tPtr = &t;
+
+    dPtr->Work();
+    tPtr->Work();  
+}
+     ```
+
+
+     More about `this` keyword: https://www.geeksforgeeks.org/this-pointer-in-c/
