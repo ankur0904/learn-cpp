@@ -1,5 +1,7 @@
 It's a programming paradigm that is based on set of rules, concepts, idea, basically a standard in programming used to solve specific type of problems.
 
+OOPs (Object-Oriented Programming) is a programming paradigm based on the concept of objects, which can contain data in the form of fields (attributes or properties) and code in the form of procedures (methods or functions).
+
 - represent real life entity with their attributes.
 
 ```C++
