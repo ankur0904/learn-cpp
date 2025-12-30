@@ -49,8 +49,15 @@ public:
 
 int main()
 {
-    Rectangle r(32,43);
+    Rectangle r(32,43); // Stack, Destructor called automatically 
     cout << "Area " << r.area() << endl;
     cout << "Perimeter " << r.perimeter() << endl;
+
+    Rectangle* r = new Rectangle(32, 43); // heap, Must call delete r; manually
+    cout << "Area " << r->area() << endl;
+    cout << "Perimeter " << r->perimeter() << endl;
+    
+    // Must delete to free memory and call destructor
+    delete r;
 }
 ```
