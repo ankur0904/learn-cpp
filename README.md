@@ -7,3 +7,4 @@
 ...
 
 - Array ADT
+- The `new` Keyword
